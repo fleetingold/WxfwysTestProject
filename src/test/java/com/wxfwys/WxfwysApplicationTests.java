@@ -3,9 +3,11 @@ package com.wxfwys;
 import com.alibaba.fastjson.JSONObject;
 import com.wxfwys.dao.BookDao;
 import com.wxfwys.entity.BookEntity;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.StringRedisTemplate;
 
 //@RunWith(SpringRunner.class)
 @SpringBootTest(classes = WxfwysApplication.class)
@@ -57,5 +59,15 @@ public class WxfwysApplicationTests {
         BookEntity bookEntity = bookDao.findBookById(1);
 
         System.out.println(JSONObject.toJSONString(bookEntity));
+    }
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+
+    @Test
+    public void stringRedisTest() {
+        //保存字符串
+        stringRedisTemplate.opsForValue().set("runoob", "Hello SpringBoot&Redis!");
+        Assert.assertEquals("Hello SpringBoot&Redis!", stringRedisTemplate.opsForValue().get("runoob"));
     }
 }

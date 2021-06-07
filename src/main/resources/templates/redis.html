@@ -8,6 +8,10 @@
 
 <h2>Redis Collections</h2>
 
+<div>
+    <p th:text="${msg}"></p>
+</div>
+
 <div th:unless="${#lists.isEmpty(keys)}">
     <dl th:each="key : ${keys}">
         <dt class="keyHeadline">
