@@ -1,9 +1,11 @@
 package com.wxfwys.service;
 
-import com.wxfwys.entity.Book;
+import com.wxfwys.entity.BookEntity;
 
 import java.util.List;
 
 public interface TestService {
-    List<Book> getAllBook();
+    List<BookEntity> getAllBook();
+
+    List<BookEntity> getVirtualBookList();
 }

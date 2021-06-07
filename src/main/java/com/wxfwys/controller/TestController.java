@@ -1,6 +1,6 @@
 package com.wxfwys.controller;
 
-import com.wxfwys.entity.Book;
+import com.wxfwys.entity.BookEntity;
 import com.wxfwys.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,10 +22,11 @@ public class TestController {
     public String testBook(
             @PathVariable("reader") String reader,
             Model model){
-        List<Book> bookList = testService.getAllBook();
+        List<BookEntity> bookList = testService.getVirtualBookList();
         model.addAttribute("books",bookList);
 
         return "bookList";
     }
+
 
 }
