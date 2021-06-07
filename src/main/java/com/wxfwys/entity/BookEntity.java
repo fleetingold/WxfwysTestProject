@@ -3,10 +3,8 @@ package com.wxfwys.entity;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
-@Document(collation = "book_collection")
 public class BookEntity {
 
-  @MongoId
   private int id;
   private String title;
   private String description;

@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Component
 public class BookDaoImpl implements BookDao {
@@ -23,7 +24,9 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public void removeBook(int id) {
-        mongoTemplate.remove(id);
+        Query query=new Query(Criteria.where("id").is(id));
+
+        mongoTemplate.remove(query, BookEntity.class);
     }
 
     @Override
@@ -45,5 +48,10 @@ public class BookDaoImpl implements BookDao {
         Query query = new Query(Criteria.where("id").is(id));
         BookEntity bookEntity = mongoTemplate.findOne(query, BookEntity.class);
         return bookEntity;
+    }
+
+    @Override
+    public List<BookEntity> getAllBook() {
+        return mongoTemplate.findAll(BookEntity.class);
     }
 }
