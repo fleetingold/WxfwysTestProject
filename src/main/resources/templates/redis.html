@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Redis View</title>
+</head>
+<body>
+
+<h2>MongoDB Collections</h2>
+
+<div th:unless="${#lists.isEmpty(keys)}">
+    <dl th:each="key : ${keys}">
+        <dt class="keyHeadline">
+            <span th:text="${key}">Title</span>
+        </dt>
+    </dl>
+</div>
+
+<div th:if="${#lists.isEmpty(keys)}">
+    <p>You have no keys in your redis database</p>
+</div>
+
+</body>
+</html>

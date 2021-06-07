@@ -1,6 +1,7 @@
 package com.wxfwys.service.impl;
 
 import com.wxfwys.service.RedisService;
+import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 
 import java.util.HashMap;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+@Service(value = "redisService")
 public class RedisServiceImpl implements RedisService {
     private Jedis jedis;
 

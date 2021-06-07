@@ -22,7 +22,7 @@ public class TestController {
     public String testBook(
             @PathVariable("reader") String reader,
             Model model){
-        List<BookEntity> bookList = testService.getVirtualBookList();
+        List<BookEntity> bookList = testService.getAllBook();
         model.addAttribute("books",bookList);
 
         return "bookList";
