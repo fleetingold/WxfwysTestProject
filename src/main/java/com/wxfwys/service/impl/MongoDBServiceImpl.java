@@ -12,6 +12,8 @@ import java.util.List;
 public class MongoDBServiceImpl implements MongoDBService {
     private String url = "mongodb+srv://fleetingold:abc-123@fleetingold-mongodb-clu.lwenx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
     private MongoClient mongoClient;
+    private MongoDatabase mongoDatabase;
+    private MongoCollection mongoCollection;
 
     public MongoDBServiceImpl() {
         mongoClient = MongoClients.create(url);
@@ -45,5 +47,29 @@ public class MongoDBServiceImpl implements MongoDBService {
             documents.add(document);
         }
         return documents;
+    }
+
+    public MongoIterable<String> listDatabaseNames() {
+        return mongoClient.listDatabaseNames();
+    }
+
+    public MongoIterable<String> listCollectionNames() {
+        return mongoDatabase.listCollectionNames();
+    }
+
+    public long countDocuments() {
+        return mongoCollection.countDocuments();
+    }
+
+    public void drop() {
+        mongoCollection.drop();
+    }
+
+    public ListIndexesIterable<Document> listIndexes() {
+        return mongoCollection.listIndexes();
+    }
+
+    public void dropIndexes() {
+        mongoCollection.dropIndexes();
     }
 }
